@@ -1,16 +1,24 @@
-const courses = [
-    { id: 1, title: "1 курс", emoji: "🌱" },
-    { id: 2, title: "2 курс", emoji: "📘" },
-    { id: 3, title: "3 курс", emoji: "📗" },
-    { id: 4, title: "4 курс", emoji: "🎓" }
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const courses = [
+        { id: 1, title: "1 курс", emoji: "🌱" },
+        { id: 2, title: "2 курс", emoji: "📘" },
+        { id: 3, title: "3 курс", emoji: "📗" },
+        { id: 4, title: "4 курс", emoji: "🎓" }
+    ];
 
-const grid = document.getElementById('coursesGrid');
+    const grid = document.getElementById('coursesGrid');
 
-courses.forEach(course => {
-    const card = document.createElement('a');
-    card.className = 'course-card';
-    card.href = `schedule.html?course=${course.id}`;
-    card.innerHTML = `<span class="emoji">${course.emoji}</span>${course.title}`;
-    grid.appendChild(card);
+    // Если элемента нет на странице, выходим (чтобы не было ошибок)
+    if (!grid) return;
+
+    // Очищаем на всякий случай
+    grid.innerHTML = '';
+
+    courses.forEach(course => {
+        const card = document.createElement('a');
+        card.className = 'course-card';
+        card.href = `schedule.html?course=${course.id}`;
+        card.innerHTML = `<span class="emoji">${course.emoji}</span>${course.title}`;
+        grid.appendChild(card);
+    });
 });
